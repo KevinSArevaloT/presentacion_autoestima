@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qué es la Autoestima</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="dots" aria-label="Navegación de secciones">
+  <button data-target="hero" class="active" aria-label="Portada"></button>
+  <button data-target="intro" aria-label="Introducción"></button>
+  <button data-target="que-es" aria-label="Qué es la autoestima"></button>
+  <button data-target="dia" aria-label="Cómo afecta el día a día"></button>
+  <button data-target="importante" aria-label="Por qué es importante"></button>
+  <button data-target="reflexion" aria-label="Reflexión"></button>
+  <button data-target="thanks" aria-label="Gracias"></button>
+</nav>
+
+<section id="hero">
+  <div class="frame reveal in">
+    <h1>Qué es la<span>Autoestima</span></h1>
+    <p class="meta">Presentado por Kevin Arevalo · Ficha 3288046</p>
+    <p class="scroll-cue">desliza para empezar ↓</p>
+  </div>
+</section>
+
+<section id="intro" class="content-section">
+  <div class="card reveal">
+    <p class="eyebrow">Introducción</p>
+    <span class="quote-mark">&ldquo;</span>
+    <h2>Una valoración que se construye con el tiempo</h2>
+    <p>La autoestima es la valoración que una persona tiene de sí misma, basada en sus pensamientos, emociones y creencias sobre su propio valor y capacidades. Se desarrolla a lo largo de la vida a través de las experiencias y las relaciones con los demás.</p>
+  </div>
+</section>
+
+<section id="que-es" class="content-section">
+  <div class="card reveal">
+    <p class="eyebrow">Definición</p>
+    <h2>Percepciones, juicios y valoraciones</h2>
+    <p>La autoestima es el conjunto de percepciones, juicios y valoraciones que una persona tiene sobre sí misma. Es la evaluación de nuestra propia valía, la cual influye profundamente en cómo nos sentimos, nos comportamos y nos relacionamos con los demás a diario.</p>
+  </div>
+</section>
+
+<section id="dia" class="content-section">
+  <div class="card reveal">
+    <p class="eyebrow">En la práctica</p>
+    <h2>Cómo afecta el día a día</h2>
+    <p>La autoestima influye en la vida diaria porque afecta la forma en que una persona piensa, siente y actúa. Una autoestima saludable ayuda a tomar decisiones con mayor confianza, afrontar los problemas de manera positiva y mantener relaciones interpersonales más sanas. Además, favorece el rendimiento académico o laboral y la capacidad para alcanzar metas.</p>
+  </div>
+</section>
+
+<section id="importante" class="content-section">
+  <div class="card reveal" style="display:flex; gap:48px; flex-wrap:wrap; align-items:flex-start;">
+    <div style="flex:1; min-width:260px;">
+      <p class="eyebrow">Por qué importa</p>
+      <h2>Un elemento fundamental para una vida equilibrada</h2>
+      <p>La autoestima es importante porque influye en la manera en que una persona se valora, enfrenta los desafíos y se relaciona con los demás. Una buena autoestima fortalece la confianza en uno mismo, ayuda a tomar decisiones adecuadas, favorece el bienestar emocional y permite afrontar las dificultades con mayor seguridad. Además, contribuye al desarrollo personal, al logro de metas y a la construcción de relaciones saludables.</p>
+    </div>
+    <div class="side-panel">
+      <div class="tag">Buena autoestima</div>
+      <div class="body">
+        <strong>Se refleja en:</strong>
+        <ul>
+          <li>Capacidad de recuperarse tras fracasos</li>
+          <li>Establecer límites claros sin culpa</li>
+          <li>Mostrarte tal como eres, sin máscaras</li>
+          <li>Crear vínculos respetuosos y auténticos</li>
+          <li>Mantener motivación incluso en momentos difíciles</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reflexion" class="content-section">
+  <div class="card reveal">
+    <p class="eyebrow">Reflexión</p>
+    <h2>Reconocerte, no ser perfecto</h2>
+    <div class="mirror">
+      <div class="mirror-circle">reconócete</div>
+      <p style="flex:1; min-width:260px;">La autoestima no consiste en creer que somos perfectos, sino en reconocer nuestro valor incluso cuando cometemos errores. Cada persona tiene fortalezas y debilidades, y ambas forman parte de lo que somos. Aprender a aceptarnos, respetarnos y tratarnos con amabilidad nos permite crecer sin depender constantemente de la aprobación de los demás.</p>
+    </div>
+  </div>
+</section>
+
+<section id="thanks">
+  <div class="frame reveal">
+    <h2>Muchas gracias<br>por su atención</h2>
+    <p>Kevin Arevalo· Ficha 3288046</p>
+  </div>
+</section>
+
+<footer class="credit">Qué es la Autoestima</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const dots = document.querySelectorAll('.dots button');
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+        dots.forEach(d=>d.classList.toggle('active', d.dataset.target===entry.target.id));
+      }
+    });
+  }, {threshold:0.4});
+
+  sections.forEach(s=>io.observe(s));
+
+  dots.forEach(d=>{
+    d.addEventListener('click', ()=>{
+      document.getElementById(d.dataset.target).scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
